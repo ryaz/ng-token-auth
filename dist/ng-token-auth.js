@@ -779,6 +779,7 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
         }
       }
       if (tokenIsCurrent($auth, newHeaders)) {
+        console.log('newHeaders', newHeaders);
         return $auth.setAuthHeaders(newHeaders);
       }
     };
@@ -794,6 +795,8 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
                   _results = [];
                   for (key in _ref) {
                     val = _ref[key];
+                    if (key == 'access-token') console.log(key, val);
+                    if (key == 'client') console.log(key, val);
                     _results.push(req.headers[key] = val);
                   }
                   return _results;
